@@ -1,0 +1,10 @@
+{
+  "members": [
+    {
+      "name": "Alice",
+      "earning_status": true,
+      "earnings": 100
+    }
+  ],
+  "expenses": []
+}

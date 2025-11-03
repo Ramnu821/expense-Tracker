@@ -86,6 +86,27 @@ The Expense Tracker features a simple and easy-to-navigate interface, ensuring a
     streamlit run app.py
     ```
 
+   ## MongoDB (optional)
+
+   The app can persist data to MongoDB. If MongoDB isn't available it falls back to a local `data.json` file in the project directory.
+
+   To enable MongoDB persistence (PowerShell example):
+
+   ```powershell
+   $env:MONGODB_URI = "mongodb://localhost:27017"    # or your MongoDB connection string
+   $env:MONGODB_DB = "expense_tracker"               # optional database name
+   python -m streamlit run "C:\Users\ramnu\OneDrive\Desktop\c2\Expense-Tracker\app.py"
+   ```
+
+   On first connect the app will create a unique index on `members.name` and an index on `expenses.category` if possible.
+
+   Quick verification (shows whether app is using MongoDB or local file):
+
+   ```powershell
+   python -c "import importlib.util; p=r'C:\Users\ramnu\OneDrive\Desktop\c2\Expense-Tracker\main.py'; spec=importlib.util.spec_from_file_location('main',p); mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); ft=mod.FamilyExpenseTracker(); print('use_db=', ft.use_db); print('data_file=', ft._data_file)"
+   ```
+
+
 ## How to Contribute
 
 - If you wish to [contribute](CONTRIBUTING.md) in any way, feel free to get involved. You can suggest improvements or provide support and encouragement by [opening an issue](https://github.com/sree-hari-s/Expense-Tracker/issues).
